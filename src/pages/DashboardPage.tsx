@@ -15,11 +15,29 @@ export default function DashboardPage() {
   const navigate = useNavigate();
   const [userSubjects, setUserSubjects] = useState<UserSubject[]>([]);
   const [careerGoal, setCareerGoal] = useState<UserCareerGoal | null>(null);
+  const [localCareerGoal, setLocalCareerGoal] = useState<{
+    id: string;
+    name: string;
+    icon: string;
+    description: string;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadData();
+    loadLocalCareerGoal();
   }, [profile?.id]);
+
+  const loadLocalCareerGoal = () => {
+    const stored = localStorage.getItem('careerGoal');
+    if (stored) {
+      try {
+        setLocalCareerGoal(JSON.parse(stored));
+      } catch (error) {
+        console.error('Failed to parse career goal:', error);
+      }
+    }
+  };
 
   const loadData = async () => {
     if (!profile?.id) return;
@@ -155,7 +173,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Career Goal Section */}
-        {careerGoal && careerGoal.career && (
+        {(careerGoal || localCareerGoal) && (
           <Card className="border-2 border-primary/30 bg-gradient-to-r from-primary/5 to-purple-500/5">
             <CardHeader>
               <div className="flex items-center justify-between">
@@ -168,44 +186,56 @@ export default function DashboardPage() {
                     <CardDescription>Your target career path</CardDescription>
                   </div>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => navigate(`/careers/${careerGoal.career_id}`)}
-                >
-                  <Briefcase className="h-4 w-4 mr-2" />
-                  View Details
-                </Button>
+                {localCareerGoal && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => navigate(`/careers/${localCareerGoal.id}`)}
+                  >
+                    <Briefcase className="h-4 w-4 mr-2" />
+                    View Details
+                  </Button>
+                )}
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="text-4xl">{careerGoal.career.icon}</span>
+                <span className="text-4xl">
+                  {localCareerGoal?.icon || careerGoal?.career?.icon}
+                </span>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold">{careerGoal.career.name}</h3>
-                  <p className="text-sm text-muted-foreground">{careerGoal.career.description}</p>
+                  <h3 className="text-2xl font-bold">
+                    {localCareerGoal?.name || careerGoal?.career?.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {localCareerGoal?.description || careerGoal?.career?.description}
+                  </p>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="font-medium">Career Progress</span>
-                  <span className="text-muted-foreground">{careerGoal.progress_percentage}%</span>
-                </div>
-                <Progress value={careerGoal.progress_percentage} className="h-3" />
-              </div>
-
-              {careerGoal.recommended_subjects && careerGoal.recommended_subjects.length > 0 && (
-                <div>
-                  <p className="text-sm font-semibold mb-2">Recommended Subjects:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {careerGoal.recommended_subjects.map((subject, idx) => (
-                      <Badge key={idx} variant="secondary">
-                        {subject}
-                      </Badge>
-                    ))}
+              {careerGoal && (
+                <>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="font-medium">Career Progress</span>
+                      <span className="text-muted-foreground">{careerGoal.progress_percentage}%</span>
+                    </div>
+                    <Progress value={careerGoal.progress_percentage} className="h-3" />
                   </div>
-                </div>
+
+                  {careerGoal.recommended_subjects && careerGoal.recommended_subjects.length > 0 && (
+                    <div>
+                      <p className="text-sm font-semibold mb-2">Recommended Subjects:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {careerGoal.recommended_subjects.map((subject, idx) => (
+                          <Badge key={idx} variant="secondary">
+                            {subject}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
               )}
 
               <div className="p-4 rounded-lg bg-primary/10 border border-primary/20">
@@ -217,7 +247,7 @@ export default function DashboardPage() {
           </Card>
         )}
 
-        {!careerGoal && (
+        {!careerGoal && !localCareerGoal && (
           <Card className="border-2 border-dashed border-primary/30">
             <CardContent className="pt-6">
               <div className="text-center space-y-4">

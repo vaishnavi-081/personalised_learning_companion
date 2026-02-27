@@ -58,6 +58,16 @@ export default function CareerRequiredSubjectsPage() {
   const handleSelectSubject = async (subjectId: string) => {
     if (!profile?.id) return;
 
+    // Store career goal in localStorage
+    if (career) {
+      localStorage.setItem('careerGoal', JSON.stringify({
+        id: career.id,
+        name: career.name,
+        icon: career.icon,
+        description: career.description,
+      }));
+    }
+
     if (isEnrolled(subjectId)) {
       navigate(`/subject/${subjectId}/knowledge-check`);
       return;

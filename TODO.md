@@ -20,13 +20,12 @@
 - [x] Step 17: Build Career Domain Guidance System
 - [x] Step 18: Add Subject Domain Grouping & Final Exam
 - [x] Step 19: Fix Career Navigation & Video Issues
-  - [x] Update all topic videos with working embed URLs
-  - [x] Add required_subjects field to careers table
-  - [x] Map all careers to their required subjects
-  - [x] Create CareerRequiredSubjectsPage
-  - [x] Update CareerPathPage to navigate to required subjects
-  - [x] Add route for career required subjects page
-- [x] Step 20: Final Testing & Validation
+- [x] Step 20: Fix Nurse Subjects, Dashboard Career Display & Redesign Login
+  - [x] Fix Nurse required subjects (add English Communication)
+  - [x] Add localStorage career goal storage
+  - [x] Update Dashboard to display career goal from localStorage
+  - [x] Redesign Login page with modern effects
+- [x] Step 21: Final Testing & Validation
 
 ## Notes
 - Using Supabase for authentication and database
@@ -34,21 +33,22 @@
 - **Assessment Quizzes**: All 11 subjects have 10-question assessment quizzes
 - **Module Quizzes**: All topics have 5-question module quizzes
 - **YouTube Videos**: All videos now use working embed URLs
-  * Java: https://www.youtube.com/embed/grEKMHGYyns
-  * Python: https://www.youtube.com/embed/_uQrJ0TkZlc
-  * HTML: https://www.youtube.com/embed/pQN-pnXPaVg
-  * CSS: https://www.youtube.com/embed/1PnVor36_40
-  * JavaScript: https://www.youtube.com/embed/W6NZfCO5SIk
-  * C Programming: https://www.youtube.com/embed/KJgsSFOSQv0
-  * C++: https://www.youtube.com/embed/vLnPwxZdW4Y
-  * SQL: https://www.youtube.com/embed/HXV3zeQKqGY
-  * Data Structures: https://www.youtube.com/embed/RBSGKlAvoiM
-  * English Communication: https://www.youtube.com/embed/juKd26qkNAw
 - **Interactive Learning System**: Colorful cards, code blocks, quiz lock system
 - **Career Domain Guidance System**: 9 domains with 40+ careers
 - **Career Navigation Flow**: Career Domains → Select Career → View Career Path → Required Subjects → Select Subject → Knowledge Check → Quiz → Modules → Final Exam
 - **Subject Domains**: Engineering & Technology, Software & IT, Commerce & Business
 - **Final Exam System**: 20 questions (10 MCQ + 10 fill blanks), pass score ≥10
+- **Career Goal Storage**: Uses localStorage to persist career goal across sessions
+- **Dashboard Career Display**: Shows career goal with icon, name, description from localStorage
+- **Login Page Design**: 
+  * Full-screen gradient background (Deep Blue #2563EB → Purple #7C3AED)
+  * Floating animated circles and glow effects
+  * Glassmorphism login card with backdrop blur
+  * Icons in input fields (Mail, Lock)
+  * Gradient button with hover scale and glow effects
+  * Fade-in-up animation on card
+  * Floating background elements with different animation speeds
+  * Modern professional appearance
 - **Career-Subject Mapping**:
   * Software Engineer → Java, Python, HTML, CSS, JavaScript, SQL, Data Structures
   * Frontend Developer → HTML, CSS, JavaScript
@@ -58,9 +58,10 @@
   * AI Engineer → Python, Data Structures
   * Cybersecurity Engineer → Python, C Programming, Data Structures
   * Engineering Careers → C Programming, C++, Data Structures
+  * Medical Careers (Nurse, Doctor, etc.) → English Communication
   * Other Careers → English Communication
 - Quiz flow: Subject Selection → Knowledge Check → Assessment Quiz → Topics → Module Quiz → Next Topic Unlocked
 - Career flow: Career Domains → Select Domain → Select Career → View Career Path → Required Subjects → Select Subject → Start Learning
 - First user to register will automatically become admin
 - Study streak updates when completing topics
-- Platform is now a complete Learning + Career Guidance + AI Mentor System
+- Platform is now a complete Learning + Career Guidance + AI Mentor System with modern UI
