@@ -16,6 +16,7 @@ import AdminMessagesPage from './pages/AdminMessagesPage';
 import CareerDomainsPage from './pages/CareerDomainsPage';
 import DomainCareersPage from './pages/DomainCareersPage';
 import CareerPathPage from './pages/CareerPathPage';
+import CareerRequiredSubjectsPage from './pages/CareerRequiredSubjectsPage';
 import type { ReactNode } from 'react';
 
 interface RouteConfig {
@@ -90,6 +91,11 @@ const routes: RouteConfig[] = [
     name: 'Career Path',
     path: '/careers/:careerId',
     element: <CareerPathPage />,
+  },
+  {
+    name: 'Career Required Subjects',
+    path: '/careers/:careerId/subjects',
+    element: <CareerRequiredSubjectsPage />,
   },
   {
     name: 'Notifications',

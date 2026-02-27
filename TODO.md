@@ -17,65 +17,50 @@
 - [x] Step 14: Add Module Quizzes for ALL Topics
 - [x] Step 15: Fix YouTube Video Display
 - [x] Step 16: Make Learning Modules Interactive
-  - [x] Create colorful learning cards
-  - [x] Add CodeBlock component with copy functionality
-  - [x] Add InfoBox component for tips and warnings
-  - [x] Add ProgressBar component for visual progress tracking
-  - [x] Implement quiz lock system
-  - [x] Add motivational messages and animations
 - [x] Step 17: Build Career Domain Guidance System
-  - [x] Create career database schema (career_domains, careers, user_career_goals)
-  - [x] Add 9 career domains with descriptions and colors
-  - [x] Add careers for Engineering & Technology (6 careers)
-  - [x] Add careers for Software & IT (6 careers)
-  - [x] Create Card3D component with glassmorphism and 3D effects
-  - [x] Build CareerDomainsPage with modern 3D cards
-  - [x] Build DomainCareersPage showing careers in each domain
-  - [x] Build CareerPathPage with roadmap, skills, technologies, videos
-  - [x] Add career API functions (getAllCareerDomains, getCareersByDomain, etc.)
-  - [x] Update Dashboard to show career goal and progress
-  - [x] Add Career Domains link to navigation header
-  - [x] Connect career paths to learning subjects
-  - [x] Add routes for all career pages
-- [x] Step 18: Final Testing & Validation
-  - [x] Run lint and fix all issues
-  - [x] Verify all features work
+- [x] Step 18: Add Subject Domain Grouping & Final Exam
+- [x] Step 19: Fix Career Navigation & Video Issues
+  - [x] Update all topic videos with working embed URLs
+  - [x] Add required_subjects field to careers table
+  - [x] Map all careers to their required subjects
+  - [x] Create CareerRequiredSubjectsPage
+  - [x] Update CareerPathPage to navigate to required subjects
+  - [x] Add route for career required subjects page
+- [x] Step 20: Final Testing & Validation
 
 ## Notes
 - Using Supabase for authentication and database
 - ALL subjects now have comprehensive W3Schools-style content
 - **Assessment Quizzes**: All 11 subjects have 10-question assessment quizzes
-  * 5 MCQ + 5 Fill in the blank questions
-  * Difficulty distribution: 3 Beginner, 4 Intermediate, 3 Expert
-  * Level detection based on score (0-3: Beginner, 4-7: Intermediate, 8-10: Expert)
 - **Module Quizzes**: All topics have 5-question module quizzes
-  * Passing score: 3 out of 5
-  * Users must pass to complete the module
-  * Can retry if failed
-- **YouTube Videos**: All videos now display as embedded iframes
-  * Automatic conversion from watch URLs to embed format
-  * Responsive 16:9 aspect ratio containers
-  * Videos play directly within the website
-- **Interactive Learning System**:
-  * Colorful card-based layout for different content sections
-  * Dark theme code blocks with copy button
-  * Info boxes for tips, warnings, and important notes
-  * Progress bars showing completion status
-  * Quiz lock system: Must pass quiz (score ≥3) to unlock next topic
-  * Sequential topic unlocking (first topic always unlocked)
-  * Motivational messages and animated quiz results
-- **Career Domain Guidance System**:
-  * 9 Career Domains: Engineering & Technology, Medical & Life Sciences, Commerce & Finance, Arts & Humanities, MBA & Business, Government Jobs, Software & IT Careers, Study Abroad, Entrepreneurship
-  * Modern 3D UI with glassmorphism, gradient cards, hover effects, and animations
-  * Each career includes: icon, description, salary, skills required, technologies, roadmap timeline, about section, and video tutorials
-  * Career roadmap shows progression: Beginner → Intermediate → Expert → Job Ready
-  * Users can set career goals and get personalized subject recommendations
-  * Dashboard shows career goal, progress percentage, and recommended next steps
-  * Career paths connect to learning modules (e.g., Software Engineer recommends Java, Python, JavaScript, SQL)
-  * Career videos embedded with YouTube player
-  * 12 careers added: Software Engineer, Mechanical Engineer, Civil Engineer, Electrical Engineer, AI Engineer, Data Scientist, Frontend Developer, Backend Developer, Full Stack Developer, Cybersecurity Engineer
+- **YouTube Videos**: All videos now use working embed URLs
+  * Java: https://www.youtube.com/embed/grEKMHGYyns
+  * Python: https://www.youtube.com/embed/_uQrJ0TkZlc
+  * HTML: https://www.youtube.com/embed/pQN-pnXPaVg
+  * CSS: https://www.youtube.com/embed/1PnVor36_40
+  * JavaScript: https://www.youtube.com/embed/W6NZfCO5SIk
+  * C Programming: https://www.youtube.com/embed/KJgsSFOSQv0
+  * C++: https://www.youtube.com/embed/vLnPwxZdW4Y
+  * SQL: https://www.youtube.com/embed/HXV3zeQKqGY
+  * Data Structures: https://www.youtube.com/embed/RBSGKlAvoiM
+  * English Communication: https://www.youtube.com/embed/juKd26qkNAw
+- **Interactive Learning System**: Colorful cards, code blocks, quiz lock system
+- **Career Domain Guidance System**: 9 domains with 40+ careers
+- **Career Navigation Flow**: Career Domains → Select Career → View Career Path → Required Subjects → Select Subject → Knowledge Check → Quiz → Modules → Final Exam
+- **Subject Domains**: Engineering & Technology, Software & IT, Commerce & Business
+- **Final Exam System**: 20 questions (10 MCQ + 10 fill blanks), pass score ≥10
+- **Career-Subject Mapping**:
+  * Software Engineer → Java, Python, HTML, CSS, JavaScript, SQL, Data Structures
+  * Frontend Developer → HTML, CSS, JavaScript
+  * Backend Developer → Java, Python, SQL, PHP
+  * Full Stack Developer → HTML, CSS, JavaScript, Java, Python, SQL
+  * Data Scientist → Python, SQL, Data Structures
+  * AI Engineer → Python, Data Structures
+  * Cybersecurity Engineer → Python, C Programming, Data Structures
+  * Engineering Careers → C Programming, C++, Data Structures
+  * Other Careers → English Communication
 - Quiz flow: Subject Selection → Knowledge Check → Assessment Quiz → Topics → Module Quiz → Next Topic Unlocked
-- Career flow: Login → Career Domains → Select Domain → Select Career → View Career Path → Set Goal → Start Learning
+- Career flow: Career Domains → Select Domain → Select Career → View Career Path → Required Subjects → Select Subject → Start Learning
 - First user to register will automatically become admin
 - Study streak updates when completing topics
 - Platform is now a complete Learning + Career Guidance + AI Mentor System

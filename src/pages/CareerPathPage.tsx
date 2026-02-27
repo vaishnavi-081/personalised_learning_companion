@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
 import { MainLayout } from '@/components/layouts/MainLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { getCareerById, setUserCareerGoal, getAllSubjects } from '@/db/api';
+import { getCareerById, getAllSubjects } from '@/db/api';
 import type { Career, Subject } from '@/types';
 import { toast } from 'sonner';
 import {
@@ -29,12 +28,10 @@ import { InfoBox } from '@/components/learning/InfoBox';
 
 export default function CareerPathPage() {
   const { careerId } = useParams<{ careerId: string }>();
-  const { profile } = useAuth();
   const navigate = useNavigate();
   const [career, setCareer] = useState<Career | null>(null);
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(true);
-  const [settingGoal, setSettingGoal] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -56,32 +53,6 @@ export default function CareerPathPage() {
       toast.error('Failed to load career');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleSetCareerGoal = async () => {
-    if (!career || !profile) return;
-
-    setSettingGoal(true);
-    try {
-      // Map technologies to subject names
-      const recommendedSubjects = career.technologies
-        .map((tech) => {
-          const subject = subjects.find(
-            (s) => s.name.toLowerCase() === tech.toLowerCase()
-          );
-          return subject?.name;
-        })
-        .filter((name): name is string => name !== undefined);
-
-      await setUserCareerGoal(profile.id, career.id, recommendedSubjects);
-      toast.success('Career goal set successfully! Check your dashboard.');
-      navigate('/dashboard');
-    } catch (error) {
-      console.error('Failed to set career goal:', error);
-      toast.error('Failed to set career goal');
-    } finally {
-      setSettingGoal(false);
     }
   };
 
@@ -321,23 +292,16 @@ export default function CareerPathPage() {
             <div className="text-center space-y-4">
               <h2 className="text-2xl font-bold">Ready to Start Your Journey?</h2>
               <p className="text-muted-foreground">
-                Set this as your career goal and get personalized learning recommendations!
+                Choose from the required subjects and begin your learning path!
               </p>
               <Button
                 size="lg"
-                onClick={handleSetCareerGoal}
-                disabled={settingGoal}
+                onClick={() => navigate(`/careers/${careerId}/subjects`)}
                 className="text-lg px-8"
               >
-                {settingGoal ? (
-                  'Setting Goal...'
-                ) : (
-                  <>
-                    <Target className="h-5 w-5 mr-2" />
-                    Set as Career Goal & Start Learning
-                    <ArrowRight className="h-5 w-5 ml-2" />
-                  </>
-                )}
+                <BookOpen className="h-5 w-5 mr-2" />
+                View Required Subjects
+                <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
             </div>
           </CardContent>

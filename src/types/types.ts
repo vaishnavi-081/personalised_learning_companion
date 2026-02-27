@@ -173,6 +173,7 @@ export interface Career {
     telugu?: string[];
     english?: string[];
   } | null;
+  required_subjects: string[];
   created_at: string;
 }
 
