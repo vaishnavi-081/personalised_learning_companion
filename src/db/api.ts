@@ -15,6 +15,7 @@ import type {
   CareerDomain,
   Career,
   UserCareerGoal,
+  SubjectDomain,
 } from '@/types';
 
 // Profile APIs
@@ -609,4 +610,89 @@ export async function updateCareerGoalProgress(
     .eq('career_id', careerId);
 
   if (error) throw error;
+}
+
+// Subject Domain APIs
+export async function getAllSubjectDomains(): Promise<SubjectDomain[]> {
+  const { data, error } = await supabase
+    .from('subject_domains')
+    .select('*')
+    .order('created_at');
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getSubjectsByDomain(domainId: string): Promise<Subject[]> {
+  const { data, error } = await supabase
+    .from('subjects')
+    .select('*')
+    .eq('domain_id', domainId)
+    .order('name');
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+// Final Exam APIs
+export async function getFinalExam(subjectId: string): Promise<Quiz | null> {
+  const { data, error } = await supabase
+    .from('quizzes')
+    .select('*')
+    .eq('subject_id', subjectId)
+    .eq('quiz_type', 'final')
+    .maybeSingle();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function hasTakenFinalExam(userId: string, subjectId: string): Promise<boolean> {
+  const quiz = await getFinalExam(subjectId);
+  if (!quiz) return false;
+
+  const { data, error } = await supabase
+    .from('user_quiz_attempts')
+    .select('id')
+    .eq('user_id', userId)
+    .eq('quiz_id', quiz.id)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data !== null;
+}
+
+export async function hasPassedFinalExam(userId: string, subjectId: string): Promise<boolean> {
+  const quiz = await getFinalExam(subjectId);
+  if (!quiz) return false;
+
+  const { data, error } = await supabase
+    .from('user_quiz_attempts')
+    .select('score')
+    .eq('user_id', userId)
+    .eq('quiz_id', quiz.id)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data ? data.score >= 10 : false;
+}
+
+export async function canTakeFinalExam(userId: string, subjectId: string): Promise<boolean> {
+  // Check if all topics are completed - get topics from all levels
+  const allTopics: Topic[] = [];
+  for (const level of ['beginner', 'intermediate', 'expert'] as SkillLevel[]) {
+    const topics = await getTopicsBySubjectAndLevel(subjectId, level);
+    allTopics.push(...topics);
+  }
+  
+  const progressData = await getUserTopicProgressBySubject(userId, subjectId);
+
+  const allCompleted = allTopics.every(topic => {
+    const progress = progressData.find(p => p.topic_id === topic.id);
+    return progress?.is_completed || false;
+  });
+
+  return allCompleted;
 }

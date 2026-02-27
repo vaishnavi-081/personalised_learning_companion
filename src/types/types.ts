@@ -1,7 +1,7 @@
 export type UserRole = 'user' | 'admin';
 export type SkillLevel = 'beginner' | 'intermediate' | 'expert';
 export type NotificationType = 'daily' | 'quiz' | 'incomplete';
-export type QuizType = 'assessment' | 'module';
+export type QuizType = 'assessment' | 'module' | 'final';
 export type QuestionType = 'mcq' | 'fill_blank';
 
 export interface Profile {
@@ -15,6 +15,14 @@ export interface Profile {
   updated_at: string;
 }
 
+export interface SubjectDomain {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  created_at: string;
+}
+
 export interface Subject {
   id: string;
   name: string;
@@ -23,6 +31,7 @@ export interface Subject {
   roadmap: string | null;
   career_paths: string[] | null;
   projects: string[] | null;
+  domain_id: string | null;
   created_at: string;
 }
 

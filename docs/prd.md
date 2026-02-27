@@ -37,7 +37,7 @@ A modern web-based learning platform that acts as a digital learning mentor, hel
 ## 3. User Flow
 
 ### 3.1 Complete User Journey
-Login → Subject Selection → Knowledge Popup → Assessment Quiz OR Beginner Modules → Learning Topics → Topic Quiz → Progress Tracking
+Login → Career Domains (Optional Learning) → Subject Domains → Subject Selection → Knowledge Popup → Assessment Quiz OR Beginner Modules → Learning Topics → Topic Quiz → Final Exam → Course Completed → Progress Tracking
 
 ## 4. Authentication System
 
@@ -52,35 +52,172 @@ Login → Subject Selection → Knowledge Popup → Assessment Quiz OR Beginner 
 - Password
 
 ### 4.3 Post-Login Redirect
-Redirect to /subjects page after successful login
+Redirect to Career Domains page after successful login
 
-## 5. Subject Selection
+## 5. Career Domains (Knowledge Only)
 
-### 5.1 Available Subjects
+### 5.1 Purpose
+Career Domains are informational only. Users do NOT enroll in career domains. Career Domains only show career options, roadmaps, required skills, required subjects, and career videos for knowledge and guidance purposes.
+
+### 5.2 Career Domains List
+
+#### 5.2.1 Engineering & Technology
+**Careers:**
+- Software Engineer
+- Mechanical Engineer
+- Civil Engineer
+- Electrical Engineer
+- Electronics Engineer
+
+**Roadmap:**
+Basic Science → Engineering Degree → Technical Skills → Projects → Job
+
+**Videos:**
+- Engineering Career Guide
+- Day in Life Engineer
+
+#### 5.2.2 Medical & Life Sciences
+**Careers:**
+- Doctor
+- Pharmacist
+- Nurse
+- Biotechnologist
+- Lab Technician
+
+**Roadmap:**
+Biology Basics → Medical Education → Internship → Practice
+
+**Videos:**
+- Medical Career Guide
+- Doctor Life
+
+#### 5.2.3 Commerce & Finance
+**Careers:**
+- Accountant
+- Bank Officer
+- Financial Analyst
+- CA
+- Business Analyst
+
+**Roadmap:**
+Commerce Basics → Accounting Skills → Finance Knowledge → Certification
+
+**Videos:**
+- Commerce Career Guide
+- Finance Jobs
+
+#### 5.2.4 Arts & Humanities
+**Careers:**
+- Teacher
+- Journalist
+- Content Writer
+- Designer
+- Psychologist
+
+**Roadmap:**
+Subject Knowledge → Communication Skills → Practice → Career
+
+**Videos:**
+- Arts Career Guide
+
+#### 5.2.5 MBA & Business
+**Careers:**
+- Manager
+- HR Manager
+- Marketing Manager
+- Business Analyst
+
+**Roadmap:**
+Business Basics → MBA → Internship → Career
+
+**Videos:**
+- MBA Career Guide
+
+#### 5.2.6 Government Jobs
+**Careers:**
+- IAS
+- Police
+- Railways
+- Banking
+- SSC Jobs
+
+**Roadmap:**
+General Knowledge → Preparation → Exam → Job
+
+**Videos:**
+- Government Jobs Guide
+
+#### 5.2.7 Software & IT Careers
+**Careers:**
+- Frontend Developer
+- Backend Developer
+- Full Stack Developer
+- Data Scientist
+- AI Engineer
+- Cybersecurity Engineer
+
+**Roadmap:**
+Programming Basics → Projects → Advanced Skills → Job
+
+**Videos:**
+- Software Career Guide
+- Developer Life
+
+#### 5.2.8 Study Abroad
+**Careers:**
+- International Education
+
+**Roadmap:**
+English Tests → Applications → University → Study
+
+**Videos:**
+- Study Abroad Guide
+
+#### 5.2.9 Entrepreneurship
+**Careers:**
+- Startup Founder
+- Business Owner
+
+**Roadmap:**
+Idea → Planning → Funding → Business
+
+**Videos:**
+- Startup Guide
+
+## 6. Subject Domain Structure
+
+### 6.1 Subject Domains
+Subjects are grouped under domains. Users select Subject Domains to view available subjects.
+
+#### 6.1.1 Engineering & Technology Subjects
+- C Programming
+- C++
+- Data Structures
+
+#### 6.1.2 Software & IT Subjects
 - Java
 - Python
 - HTML
 - CSS
 - JavaScript
-- C Programming
-- C++
-- PHP
 - SQL
-- Data Structures
+- PHP
+
+#### 6.1.3 Commerce Subjects
 - English Communication
 
-### 5.2 Selection Rules
+### 6.2 Subject Selection Rules
 - Manual subject selection (no auto-enrollment)
 - Users can select and learn multiple subjects
 - Progress saved separately for each subject
 - Example: Java → 60%, Python → 30%
 
-## 6. Knowledge Assessment
+## 7. Knowledge Assessment
 
-### 6.1 Knowledge Popup
+### 7.1 Knowledge Popup
 After subject selection, display popup: \"Do you have knowledge about this subject?\"
 
-### 6.2 Options
+### 7.2 Options
 
 **New Learner:**
 - Skip quiz
@@ -90,7 +227,7 @@ After subject selection, display popup: \"Do you have knowledge about this subje
 **I Have Knowledge:**
 - Start assessment quiz
 
-### 6.3 Assessment Quiz Structure
+### 7.3 Assessment Quiz Structure
 Every subject must include an Initial Assessment Quiz with the following structure:
 
 - Total Questions: 10
@@ -100,14 +237,14 @@ Every subject must include an Initial Assessment Quiz with the following structu
   - 4 Intermediate questions
   - 3 Expert questions
 
-### 6.4 Level Detection
+### 7.4 Level Detection
 - Score 0-3: Beginner
 - Score 4-7: Intermediate
 - Score 8-10: Expert
 - Display only the detected level, hide others
 - Store: Subject, Score, Level
 
-### 6.5 Assessment Quiz Questions by Subject
+### 7.5 Assessment Quiz Questions by Subject
 
 **Java Quiz:**
 - MCQ: Which keyword is used for inheritance in Java? (a) extends (b) include (c) inherit (d) super
@@ -153,14 +290,14 @@ Every subject must include an Initial Assessment Quiz with the following structu
 - MCQ: Past tense of go: (a) Went (b) Gone (c) Going
 - Fill Blank: Communication means sharing ______. (Answer: Information)
 
-## 7. Learning Structure
+## 8. Learning Structure
 
-### 7.1 Hierarchy
+### 8.1 Hierarchy
 Subject → Level → Topics → Topic Page
 
 Example: Java → Beginner → Variables → Topic Page
 
-### 7.2 Topic Page Content
+### 8.2 Topic Page Content
 Each topic must include:
 - Full theory explanation
 - Code examples
@@ -174,7 +311,10 @@ Each topic must include:
 
 Content must be detailed and comprehensive like W3Schools, not short summaries.
 
-### 7.3 YouTube Video Integration
+### 8.3 YouTube Video Integration
+
+**Video Format:**
+All videos must use embed links in the format: youtube.com/embed/videoID
 
 **Telugu Channels:**
 - Telugu Web Guru
@@ -192,9 +332,9 @@ Content must be detailed and comprehensive like W3Schools, not short summaries.
 
 Use topic-based videos, not full course videos.
 
-## 8. Subject Roadmaps and Complete Module Structure
+## 9. Subject Roadmaps and Complete Module Structure
 
-### 8.1 Java
+### 9.1 Java
 **Roadmap:** Basics → OOP → Collections → Database → Spring → Projects → Job Ready
 
 **Beginner Topics:**
@@ -235,7 +375,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.2 Python
+### 9.2 Python
 **Roadmap:** Basics → Functions → OOP → Libraries → Web → Projects → Job Ready
 
 **Beginner Topics:**
@@ -270,7 +410,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.3 HTML
+### 9.3 HTML
 **Roadmap:** Tags → Lists → Tables → Forms → Semantic → Responsive → Projects
 
 **Beginner Topics:**
@@ -300,7 +440,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.4 CSS
+### 9.4 CSS
 **Roadmap:** Selectors → Box Model → Flexbox → Grid → Animations → Responsive
 
 **Beginner Topics:**
@@ -326,7 +466,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.5 JavaScript
+### 9.5 JavaScript
 **Roadmap:** Basics → Functions → DOM → Events → ES6 → APIs → Projects
 
 **Beginner Topics:**
@@ -352,7 +492,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.6 C Programming
+### 9.6 C Programming
 **Roadmap:** Basics → Functions → Arrays → Pointers → Structures
 
 **Beginner Topics:**
@@ -377,7 +517,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.7 C++
+### 9.7 C++
 **Roadmap:** Basics → OOP → STL → Projects
 
 **Beginner Topics:**
@@ -402,7 +542,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.8 PHP
+### 9.8 PHP
 **Roadmap:** Basics → Forms → Database → CRUD
 
 **Beginner Topics:**
@@ -424,7 +564,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.9 SQL
+### 9.9 SQL
 **Roadmap:** Queries → Joins → Functions → Optimization
 
 **Beginner Topics:**
@@ -447,7 +587,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.10 Data Structures
+### 9.10 Data Structures
 **Roadmap:** Arrays → Lists → Stack → Queue → Trees → Graphs
 
 **Beginner Topics:**
@@ -470,7 +610,7 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-### 8.11 English Communication
+### 9.11 English Communication
 **Roadmap:** Grammar → Vocabulary → Speaking → Interview Skills
 
 **Beginner Topics:**
@@ -492,9 +632,9 @@ Use topic-based videos, not full course videos.
 **Assessment Quiz:** Included (10 Questions)
 **Module Quiz:** Included (5 Questions per module)
 
-## 9. Module Structure Requirements
+## 10. Module Structure Requirements
 
-### 9.1 Universal Module Requirements
+### 10.1 Universal Module Requirements
 Every subject must include:
 - Roadmap section
 - Initial Assessment Quiz (10 Questions)
@@ -511,7 +651,7 @@ Every subject must include:
 - Module Quiz (5 Questions per module)
 - 1-2 YouTube videos per topic
 
-### 9.2 Topic Page Structure
+### 10.2 Topic Page Structure
 Each topic must be clickable and open a Topic Learning Page containing:
 - Full theory explanation
 - Syntax
@@ -522,18 +662,18 @@ Each topic must be clickable and open a Topic Learning Page containing:
 
 Content must be detailed and comprehensive, not short summaries.
 
-## 10. Module Quiz
+## 11. Module Quiz
 
-### 10.1 Quiz Structure
+### 11.1 Quiz Structure
 Every module in every subject must include a Module Quiz:
 - 5 Questions per module
 - Question Types: Mix of MCQ + Fill in the blanks
 
-### 10.2 Pass/Fail Logic
+### 11.2 Pass/Fail Logic
 - Score ≤ 2: Retake quiz
 - Score ≥ 3: Module completed, proceed to next
 
-### 10.3 Universal Quiz Rule
+### 11.3 Universal Quiz Rule
 All subjects must include:
 - Assessment Quiz (10 Questions)
 - Module Quiz (5 Questions per module)
@@ -541,9 +681,31 @@ All subjects must include:
 
 No subject should skip quiz functionality.
 
-## 11. Dashboard
+## 12. Final Course Exam
 
-### 11.1 Dashboard Elements
+### 12.1 Exam Trigger
+After completing all modules in a subject, show Final Exam.
+
+### 12.2 Final Exam Structure
+- Total Questions: 20
+- Question Types: 10 MCQ + 10 Fill in the blanks
+
+### 12.3 Pass Rule
+- Score ≥ 10: Course Completed
+
+### 12.4 Fail Rule
+- Score < 10: Retake Exam
+
+### 12.5 Course Completion
+After passing exam show:
+- ✔ Course Completed
+- ✔ Certificate Ready Message
+
+Example: \"Congratulations! You completed Java Course.\"
+
+## 13. Dashboard
+
+### 13.1 Dashboard Elements
 - Student Name
 - Selected Subjects
 - Skill Levels
@@ -554,53 +716,53 @@ No subject should skip quiz functionality.
 - Study Streak
 - Alerts
 
-## 12. Study Reminders
+## 14. Study Reminders
 
-### 12.1 Reminder Types
+### 14.1 Reminder Types
 - Daily Reminder
 - Quiz Reminder
 - Incomplete Module Reminder
 
-### 12.2 Notification System
+### 14.2 Notification System
 - In-app notifications only
 - Notification Bell icon
 
-## 13. Study Streak
+## 15. Study Streak
 
-### 13.1 Streak Display
+### 15.1 Streak Display
 - Show: 🔥 Study Streak X Days
 - Reset if user misses a day
 
-## 14. Help Desk
+## 16. Help Desk
 
-### 14.1 Help Desk Fields
+### 16.1 Help Desk Fields
 - Name
 - Email
 - Message
 
-### 14.2 Functionality
+### 16.2 Functionality
 - Store all messages for admin review
 
-## 15. Feedback System
+## 17. Feedback System
 
-### 15.1 Feedback Trigger
+### 17.1 Feedback Trigger
 After subject completion
 
-### 15.2 Feedback Questions
+### 17.2 Feedback Questions
 - Was this helpful?
 - Suggestions
 
-## 16. Admin Panel
+## 18. Admin Panel
 
-### 16.1 Admin Access
+### 18.1 Admin Access
 - Admin Login functionality
 
-### 16.2 Admin Features
+### 18.2 Admin Features
 - View all users
 - View user progress
 - View help desk messages
 
-## 17. Final Goals
+## 19. Final Goals
 
 The system must function as:
 - Real Learning Platform
@@ -610,15 +772,16 @@ The system must function as:
 
 Specifically designed for first-generation students to provide comprehensive learning support and career guidance.
 
-All subjects must behave consistently with complete modules, topics, learning pages, assessment quizzes, module quizzes, and videos following the W3Schools model.
+All subjects must behave consistently with complete modules, topics, learning pages, assessment quizzes, module quizzes, final exams, and videos following the W3Schools model.
 
-## 18. Quiz Implementation Summary
+## 20. Quiz Implementation Summary
 
 All 11 subjects must include:
 - Initial Assessment Quiz after subject selection
 - Module Quizzes after completing each module
+- Final Course Exam after completing all modules
 - Level detection based on assessment score
 - Pass/fail logic for module progression
 
 Expected flow for all subjects:
-Subject Selection → Knowledge Popup → Assessment Quiz → Level Detection → Modules → Module Quiz → Progress Tracking
+Subject Selection → Knowledge Popup → Assessment Quiz → Level Detection → Modules → Module Quiz → Final Exam → Course Completed → Progress Tracking
