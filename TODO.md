@@ -21,11 +21,13 @@
 - [x] Step 18: Add Subject Domain Grouping & Final Exam
 - [x] Step 19: Fix Career Navigation & Video Issues
 - [x] Step 20: Fix Nurse Subjects, Dashboard Career Display & Redesign Login
-  - [x] Fix Nurse required subjects (add English Communication)
-  - [x] Add localStorage career goal storage
-  - [x] Update Dashboard to display career goal from localStorage
-  - [x] Redesign Login page with modern effects
-- [x] Step 21: Final Testing & Validation
+- [x] Step 21: Add Blurred Background Image to Login & Registration
+  - [x] Add full-screen blurred background image to Login page
+  - [x] Add full-screen blurred background image to Registration page
+  - [x] Update card styling with glassmorphism effect
+  - [x] Add dark overlay and gradient overlay
+  - [x] Keep other pages unchanged (Dashboard, Subjects, etc.)
+- [x] Step 22: Final Testing & Validation
 
 ## Notes
 - Using Supabase for authentication and database
@@ -40,15 +42,19 @@
 - **Final Exam System**: 20 questions (10 MCQ + 10 fill blanks), pass score ≥10
 - **Career Goal Storage**: Uses localStorage to persist career goal across sessions
 - **Dashboard Career Display**: Shows career goal with icon, name, description from localStorage
-- **Login Page Design**: 
-  * Full-screen gradient background (Deep Blue #2563EB → Purple #7C3AED)
-  * Floating animated circles and glow effects
-  * Glassmorphism login card with backdrop blur
-  * Icons in input fields (Mail, Lock)
+- **Login & Registration Page Design**: 
+  * Full-screen blurred background image (Unsplash library image)
+  * Strong blur effect (filter: blur(8px)) on background
+  * Dark overlay (bg-black/40) for better contrast
+  * Animated gradient overlay (Deep Blue #2563EB → Purple #7C3AED)
+  * Glassmorphism card with backdrop-blur-2xl
+  * Semi-transparent white card (bg-white/90) with window-like appearance
+  * Icons in input fields (User, Mail, Lock)
   * Gradient button with hover scale and glow effects
-  * Fade-in-up animation on card
-  * Floating background elements with different animation speeds
-  * Modern professional appearance
+  * Fade-in-up animation on card entrance
+  * Professional floating window design
+  * Background only on Login and Registration pages
+  * All other pages (Dashboard, Subjects, Career Domains, etc.) use normal design
 - **Career-Subject Mapping**:
   * Software Engineer → Java, Python, HTML, CSS, JavaScript, SQL, Data Structures
   * Frontend Developer → HTML, CSS, JavaScript
@@ -64,4 +70,4 @@
 - Career flow: Career Domains → Select Domain → Select Career → View Career Path → Required Subjects → Select Subject → Start Learning
 - First user to register will automatically become admin
 - Study streak updates when completing topics
-- Platform is now a complete Learning + Career Guidance + AI Mentor System with modern UI
+- Platform is now a complete Learning + Career Guidance + AI Mentor System with modern UI and professional authentication pages
